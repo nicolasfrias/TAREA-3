@@ -4,7 +4,7 @@ import ("fmt")
 type  nodo struct {
   valor int
   altura int
-  Lefth *nodo
+  Left *nodo
   Right *nodo
 }
 type AVL struct{
@@ -15,20 +15,20 @@ func NewAVL() *AVL{
 }
 func(a *AVL) RotacionIZ()*nodo{
   node:=a.Right
-  raiz.Right=nodo.Lefth
-  nodo.Lefth=raiz
+  raiz.Right=nodo.Left
+  nodo.Left=raiz
   raiz.altura= a.max(a.AlturaIz(),a.AlturaDer())+1
   node.altura= a.max(a.AlturaIz(),a.AlturaDer())+1
   return node
 }
 func(a*AVL) RotacionIZDER() *nodo{
-  raiz.Lefth = a.RotacionIZ()
+  raiz.Left = a.RotacionIZ()
   raiz=a.RostacionDER()
   return raiz
 }
 func (a *AVL) RotacionDER() *nodo{
-  node:=raiz.Lefth
-  raiz.Lefth=nodo.Right
+  node:=raiz.Left
+  raiz.Left=nodo.Right
   node.Right=raiz
   raiz.altura= a.max(a.AlturaIz(),a.AlturaDer())+1
   node.altura= a.max(a.AlturaIz(),a.AlturaDer())+1
@@ -64,9 +64,9 @@ if raiz = nil{
   return
 }
 if x<raiz.valor{
-      raiz.Lchild =a.insertar(x)
+      raiz.Left =a.insertar(x)
       if a.AlturaIz()-a.AlturaDer()==2{
-        if x < raiz.Lefth.valor{
+        if x < raiz.Left.valor{
           raiz=RostacionDER()
         }else{
           raiz=RotacionIZDER()
@@ -93,7 +93,7 @@ if  x> raiz.valor{
   a.Right.buscar(x)
 }
 if  x< raiz.valor{
-  a.Lefth.buscar(x)
+  a.Left.buscar(x)
 }
 if  x == raiz.valor{
   return true
