@@ -17,8 +17,8 @@ func(n *nodo) RotacionIZ()*nodo{
   node:=n.Right
   n.Right=node.Left
   node.Left=n
-  n.altura= n.max(n.left.Altura(),n.right.Altura())+1
-  node.altura= n.max(n.left.Altura(),n.right.Altura())+1
+  n.altura= n.max(n.Left.Altura(),n.Right.Altura())+1
+  node.altura= n.max(n.Left.Altura(),n.Right.Altura())+1
   return node
 }
 func(n*nodo) RotacionIZDER() *nodo{
