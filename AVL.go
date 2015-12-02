@@ -13,41 +13,36 @@ type AVL struct{
 func NewAVL() *AVL{
   return New(AVL)
 }
-func(a *AVL) RotacionIZ()*nodo{
-  node:=a.Right
-  raiz.Right=nodo.Left
-  nodo.Left=raiz
-  raiz.altura= a.max(a.AlturaIz(),a.AlturaDer())+1
-  node.altura= a.max(a.AlturaIz(),a.AlturaDer())+1
+func(n *nodo) RotacionIZ()*nodo{
+  node:=n.Right
+  n.Right=node.Left
+  node.Left=n
+  n.altura= n.max(n.left.Altura(),n.right.Altura())+1
+  node.altura= n.max(n.left.Altura(),n.right.Altura())+1
   return node
 }
-func(a*AVL) RotacionIZDER() *nodo{
-  raiz.Left = a.RotacionIZ()
-  raiz=a.RostacionDER()
-  return raiz
+func(n*nodo) RotacionIZDER() *nodo{
+  n.Left = n.RotacionIZ()
+  n=n.RostacionDER()
+  return n
 }
-func (a *AVL) RotacionDER() *nodo{
-  node:=raiz.Left
-  raiz.Left=nodo.Right
-  node.Right=raiz
-  raiz.altura= a.max(a.AlturaIz(),a.AlturaDer())+1
-  node.altura= a.max(a.AlturaIz(),a.AlturaDer())+1
+func (n*nodo) RotacionDER() *nodo{
+  node:=n.Left
+  n.Left=node.Right
+  node.Right=n
+  n.altura= n.max(n.left.Altura(),n.right.Altura())+1
+  node.altura= n.max(n.left.Altura(),n.right.Altura())+1
   return node
 }
-func (a*AVL) RotacionDERIZ()*nodo{
-  raiz.Right=a.RostacionDER()
-  raiz=a.RotacionIZ()
-  return raiz
+func (n*nodo) RotacionDERIZ()*nodo{
+  n.Right=n.RotacionDER()
+  n=n.RotacionIZ()
+  return n
 }
-func (a*AVL)AlturaDer()int{
+
+func (n*nodo)Altura()int{
   if raiz != nil{
-    return raiz.Right.altura
-  }
-  return 0
-}
-func (a*AVL)AlturaIz()int{
-  if raiz != nil{
-    return raiz.Lefth.altura
+    return n.altura
   }
   return 0
 }
@@ -57,45 +52,52 @@ func max(a,b int)int{
   }
   return b
 }
-func (a*AVL)insertar(x int) {
-if raiz = nil{
-  raiz=&AVL{x,0,nil,nil}
-  raiz.altura=max(a.AlturaIz(),a.AlturaDer())+1
-  return
+func (a*AVL)Insertar(x int) {
+return a.root.insertar(x)
 }
-if x<raiz.valor{
-      raiz.Left =a.insertar(x)
-      if a.AlturaIz()-a.AlturaDer()==2{
-        if x < raiz.Left.valor{
-          raiz=RostacionDER()
+func (n*nodo) insertar(x int){
+  
+if n = nil{
+  n=&nodo{x,0,nil,nil}
+  n.altura=n.max(n.left.Altura(),n.right.Altura())+1
+  return
+  }
+if x<n.valor{
+      n.Left =n.insertar(x)
+      if n.left.Altura()-n.right.Altura()==2{
+        if x < n.Left.valor{
+          n=RotacionDER()
         }else{
-          raiz=RotacionIZDER()
+          n=RotacionIZDER()
         }
       }
     }
-  if x>raiz.valor{
-        raiz.Right =a.insertar(x)
-        if a.AlturaDer()-a.AlturaIz()==2{
-          if x < raiz.Right.valor{
-            raiz=RotacionIz()
+  if x>n.valor{
+        n.Right =n.insertar(x)
+        if n.right.Altura()-n.left.Altura()==2{
+          if x < n.Right.valor{
+            n=RotacionIz()
           }else{
-            raiz=RotacionDERIZ()
+            n=RotacionDERIZ()
           }
         }
 }
-raiz.altura= max(a.AlturaIz(),a.AlturaDer())+1
+n.altura= max(n.left.Altura(),n.right.Altura())+1
 }
-func (a*AVL)buscar(x int)bool{
-    if raiz=nil{
+func (a*AVL)Buscar(x int)bool{
+return a.raiz.buscar(x)  
+}
+func (n *nodo)buscar(x int)bool{
+    if n=nil{
       false
     }
-if  x> raiz.valor{
-  a.Right.buscar(x)
+if  x> n.valor{
+  n.Right.buscar(x)
 }
-if  x< raiz.valor{
-  a.Left.buscar(x)
+if  x< n.valor{
+  n.Left.buscar(x)
 }
-if  x == raiz.valor{
+if  x == n.valor{
   return true
 }
 }
